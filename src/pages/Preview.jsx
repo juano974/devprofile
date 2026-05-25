@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { CVContext } from "../context/CVContext"
 
-function Preview() {
+function Preview() { 
 
   const { personalInfo } = useContext(CVContext)
 

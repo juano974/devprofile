@@ -1,14 +1,30 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useEffect } from "react"
 
 export const CVContext = createContext()
 
 function CVProvider({ children }) {
 
-  const [personalInfo, setPersonalInfo] = useState({
-    nombre: "",
-    profesion: "",
-    email: "",
+  const [personalInfo, setPersonalInfo] = useState(() => {
+
+    const savedData = localStorage.getItem("personalInfo")
+
+    return savedData
+      ? JSON.parse(savedData)
+      : {
+          nombre: "",
+          profesion: "",
+          email: "",
+        }
   })
+
+  useEffect(() => {
+
+    localStorage.setItem(
+      "personalInfo",
+      JSON.stringify(personalInfo)
+    )
+
+  }, [personalInfo])
 
   return (
     <CVContext.Provider
