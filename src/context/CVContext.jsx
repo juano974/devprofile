@@ -1,34 +1,49 @@
-import { createContext, useState, useEffect } from "react"
+/* eslint-disable react-refresh/only-export-components */
+import { createContext } from "react"
+import useLocalStorage from "../hooks/useLocalStorage"
 
 export const CVContext = createContext()
 
 function CVProvider({ children }) {
-
-  const [personalInfo, setPersonalInfo] = useState(() => {
-
-    const savedData = localStorage.getItem("personalInfo")
-
-    return savedData
-      ? JSON.parse(savedData)
-      : {
-          nombre: "",
-          profesion: "",
-          email: "",
-        }
+  const [cvData, setCvData] = useLocalStorage("cvData", {
+    personalInfo: {
+      nombre: "",
+      profesion: "",
+      email: "",
+      ciudad: "",
+      telefono: "",
+      descripcion: "",
+      enlaces: {
+        github: "",
+        linkedin: "",
+        portfolio: "",
+        personal: "",
+        repositorio: ""
+      },
+      imagenUrl: ""
+    },
+    skills: [],
+    projects: [],
+    education: [],
+    experience: [],
+    languages: []
   })
 
-  useEffect(() => {
-
-    localStorage.setItem(
-      "personalInfo",
-      JSON.stringify(personalInfo)
-    )
-
-  }, [personalInfo])
+  // Backward compatibility selectors and helpers
+  const personalInfo = cvData.personalInfo || {}
+  
+  const setPersonalInfo = (newInfo) => {
+    setCvData(prevData => ({
+      ...prevData,
+      personalInfo: typeof newInfo === "function" ? newInfo(prevData.personalInfo || {}) : newInfo
+    }))
+  }
 
   return (
     <CVContext.Provider
       value={{
+        cvData,
+        setCvData,
         personalInfo,
         setPersonalInfo,
       }}
