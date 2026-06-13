@@ -360,3 +360,60 @@
   gap: 12px;
   font-size: 13px;
 }
+
+/* ==========================================
+   ESTILOS DE IMPRESIÓN Y EXPORTACIÓN PDF
+   ========================================== */
+
+/* Forzar tema claro en el cuerpo al imprimir */
+.html2pdf-mode,
+.html2pdf-mode :root {
+  --bg: #ffffff !important;
+  --text: #5c564d !important;
+  --text-h: #26221b !important;
+  --border: #eae2d1 !important;
+  --social-bg: rgba(243, 238, 225, 0.6) !important;
+}
+
+/* Forzar disposición de A4 a doble columna de 900px */
+.html2pdf-mode .cv-paper {
+  width: 900px !important;
+  max-width: 900px !important;
+  min-height: auto !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: #ffffff !important;
+  color: #2b2925 !important;
+  display: grid !important;
+  grid-template-columns: 280px 1fr !important;
+}
+
+.html2pdf-mode .cv-sidebar {
+  background: #fbf9f4 !important;
+  border-right: 1px solid #eae2d1 !important;
+  padding: 40px 30px !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.html2pdf-mode .cv-main {
+  background: #ffffff !important;
+  padding: 50px 40px !important;
+}
+
+/* Evitar saltos de página dentro de elementos específicos */
+.html2pdf-mode .cv-sidebar-section,
+.html2pdf-mode .cv-language-item,
+.html2pdf-mode .cv-main > section,
+.html2pdf-mode .cv-timeline-item,
+.html2pdf-mode .cv-project-item,
+.html2pdf-mode .cv-header {
+  page-break-inside: avoid !important;
+  break-inside: avoid !important;
+}
+
+/* Ocultar elementos innecesarios en el PDF si los hay */
+.html2pdf-mode .no-pdf {
+  display: none !important;
+}
