@@ -41,12 +41,10 @@ function Editor() {
 
   return (
     <div style={{ padding: "0 20px" }}>
-      <h1 style={{ textAlign: "left", fontSize: "36px", marginBottom: "8px", paddingLeft: "24px" }}>
-        Editor de CV
-      </h1>
-      <p style={{ textAlign: "left", color: "var(--text)", paddingLeft: "24px", marginBottom: "24px" }}>
-        Construye tu perfil profesional paso a paso. Todos los cambios se guardan automáticamente.
-      </p>
+      <header className="editor-header">
+        <h1>Editor de CV</h1>
+        <p>Construye tu perfil profesional paso a paso. Todos los cambios se guardan automáticamente.</p>
+      </header>
       
       <div className="editor-container">
         <aside className="editor-tabs">

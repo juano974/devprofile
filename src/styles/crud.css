@@ -117,7 +117,6 @@
 @media (max-width: 600px) {
   .form-row {
     grid-template-columns: 1fr;
-    gap: 0;
   }
 }
 
@@ -350,4 +349,36 @@
   border-radius: 6px;
   margin-bottom: 12px;
   border: 1px solid var(--border);
+}
+
+/* Editor Header responsive styles */
+.editor-header {
+  text-align: left;
+  padding-left: 24px;
+  margin-bottom: 24px;
+}
+
+.editor-header h1 {
+  font-size: 36px;
+  margin: 0 0 8px 0;
+  color: var(--text-h);
+}
+
+.editor-header p {
+  color: var(--text);
+  margin: 0;
+  font-size: 15px;
+}
+
+@media (max-width: 900px) {
+  .editor-header {
+    padding-left: 16px;
+    margin-bottom: 16px;
+  }
+  .editor-header h1 {
+    font-size: 28px;
+  }
+  .editor-header p {
+    font-size: 14px;
+  }
 }

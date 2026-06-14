@@ -1,14 +1,17 @@
+import { forwardRef } from "react"
 import PreviewSidebar from "./PreviewSidebar"
 import PreviewMain from "./PreviewMain"
 import "../../styles/preview.css"
 
-function CVPreview() {
+const CVPreview = forwardRef((props, ref) => {
   return (
-    <div className="cv-paper">
+    <div ref={ref} className="cv-paper">
       <PreviewSidebar />
       <PreviewMain />
     </div>
   )
-}
+})
+
+CVPreview.displayName = "CVPreview"
 
 export default CVPreview

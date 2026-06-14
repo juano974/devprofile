@@ -3,10 +3,10 @@ import ThemeToggle from "./ThemeToggle"
 
 function Navbar() {
   return (
-    <nav style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%", boxSizing: "border-box" }}>
-      <div style={{ width: "40px" }} className="nav-spacer" />
+    <nav className="navbar">
+      <span className="navbar-logo">DevProfile</span>
       
-      <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>
+      <div className="navbar-links">
         <NavLink to="/">Inicio</NavLink>
         <NavLink to="/editor">Editor</NavLink>
         <NavLink to="/preview">Preview</NavLink>
@@ -14,7 +14,9 @@ function Navbar() {
         <NavLink to="/about">About</NavLink>
       </div>
 
-      <ThemeToggle />
+      <div className="navbar-toggle-container">
+        <ThemeToggle />
+      </div>
     </nav>
   )
 }
