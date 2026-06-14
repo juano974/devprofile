@@ -109,11 +109,10 @@ code {
 }
 
 /* Premium Navbar Styling */
-nav {
+.navbar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 16px;
   padding: 16px 24px;
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
@@ -124,15 +123,28 @@ nav {
   z-index: 100;
   margin-bottom: 32px;
   box-shadow: 0 4px 10px -5px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  nav {
-    background: rgba(22, 23, 29, 0.85);
-  }
+:root.dark .navbar {
+  background: rgba(22, 23, 29, 0.85);
 }
 
-nav a {
+.navbar-logo {
+  font-family: var(--heading);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text-h);
+  letter-spacing: -0.5px;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.navbar-links a {
   text-decoration: none;
   color: var(--text);
   font-family: var(--sans);
@@ -144,15 +156,57 @@ nav a {
   border: 1px solid transparent;
 }
 
-nav a:hover {
+.navbar-links a:hover {
   color: var(--accent);
   background: var(--accent-bg);
   transform: translateY(-1px);
 }
 
-nav a.active {
+.navbar-links a.active {
   color: var(--accent);
   background: var(--accent-bg);
   border-color: var(--accent-border);
   box-shadow: 0 2px 8px -2px var(--accent-bg);
+}
+
+/* Mobile responsive navbar */
+@media (max-width: 650px) {
+  .navbar {
+    flex-direction: column;
+    gap: 14px;
+    padding: 12px 16px;
+    align-items: flex-start;
+  }
+  
+  .navbar-logo {
+    align-self: flex-start;
+    margin-bottom: 2px;
+  }
+  
+  .navbar-toggle-container {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+  }
+  
+  .navbar-links {
+    width: 100%;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 6px;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    gap: 6px;
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  .navbar-links::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  
+  .navbar-links a {
+    padding: 6px 12px;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
 }
