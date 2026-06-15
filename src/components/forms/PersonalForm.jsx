@@ -190,9 +190,33 @@ function PersonalForm() {
           />
           {errors.imagenUrl && <span className="form-error">{errors.imagenUrl}</span>}
         </div>
+
+        <div className="form-group">
+          <label className="form-label">O Subir Foto Local (Recomendado para evitar bloqueos en PDF)</label>
+          <input
+            type="file"
+            accept="image/*"
+            className="form-control"
+            onChange={(e) => {
+              const file = e.target.files[0]
+              if (file) {
+                if (file.size > 1500000) {
+                  alert("La imagen es muy grande. Selecciona una de menos de 1.5MB para guardarla localmente.")
+                  return
+                }
+                const reader = new FileReader()
+                reader.onloadend = () => {
+                  setFormData(prev => ({ ...prev, imagenUrl: reader.result }))
+                  setPersonalInfo(prev => ({ ...prev, imagenUrl: reader.result }))
+                }
+                reader.readAsDataURL(file)
+              }
+            }}
+          />
+        </div>
       </div>
 
-      {formData.imagenUrl && validateUrl(formData.imagenUrl) && (
+      {formData.imagenUrl && (
         <div style={{ display: "flex", gap: "16px", alignItems: "center", margin: "16px 0", padding: "16px", background: "var(--social-bg)", borderRadius: "8px", border: "1px solid var(--border)" }}>
           <img 
             src={formData.imagenUrl} 

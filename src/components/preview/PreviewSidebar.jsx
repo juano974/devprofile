@@ -19,8 +19,18 @@ function PreviewSidebar() {
           src={personalInfo?.imagenUrl || "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&h=150&q=80"}
           alt={personalInfo?.nombre || "Avatar"}
           className="cv-avatar"
+          crossOrigin={personalInfo?.imagenUrl && !personalInfo.imagenUrl.startsWith("data:") ? "anonymous" : undefined}
           onError={(e) => {
-            e.target.src = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&h=150&q=80"
+            // Si la petición CORS falló, quitamos el atributo y reintentamos cargar de forma normal
+            if (e.target.getAttribute("crossorigin")) {
+              e.target.removeAttribute("crossorigin")
+              const currentSrc = e.target.src
+              e.target.src = ""
+              e.target.src = currentSrc
+            } else {
+              // Si falla de forma definitiva, mostramos la imagen predeterminada
+              e.target.src = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&h=150&q=80"
+            }
           }}
         />
       </div>
