@@ -26,14 +26,14 @@ const formatYAxis = (tick) => {
   return ""
 }
 
-// Warm Golden/Bronze color palette for slices (integrating var(--accent))
+// Premium Professional color palette for slices (harmonized with var(--accent))
 const PIE_COLORS = [
-  "var(--accent)",             // Golden Accent
-  "#b0873d",                   // Warm Golden Bronze
-  "#dcc393",                   // Light Soft Gold
-  "#a37f3f",                   // Medium Matte Gold
-  "#856730",                   // Dark Golden Chocolate
-  "rgba(197, 160, 89, 0.6)"    // Golden Glow
+  "var(--accent)",             // Primary Accent (Blue)
+  "#4f46e5",                   // Indigo
+  "#06b6d4",                   // Cyan/Sky
+  "#0d9488",                   // Teal
+  "#8b5cf6",                   // Violet
+  "rgba(10, 102, 194, 0.6)"    // Soft Blue Glow
 ]
 
 // Custom Tooltip component to match design requirements
@@ -103,7 +103,7 @@ function SkillChart({ skills }) {
               margin={{ top: 10, right: 10, left: 15, bottom: 20 }}
             >
               <defs>
-                <linearGradient id="barGoldenGradient" x1="0" y1="0" x2="0" y2="1">
+                <linearGradient id="barAccentGradient" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stopColor="var(--accent)" stopOpacity={1} />
                   <stop offset="100%" stopColor="var(--accent)" stopOpacity={0.3} />
                 </linearGradient>
@@ -135,7 +135,7 @@ function SkillChart({ skills }) {
               />
               <Bar 
                 dataKey="levelVal" 
-                fill="url(#barGoldenGradient)" 
+                fill="url(#barAccentGradient)" 
                 radius={[6, 6, 0, 0]}
                 barSize={32}
               />
@@ -157,12 +157,12 @@ function SkillChart({ skills }) {
                 cx="50%"
                 cy="50%"
                 innerRadius={60}
-                outerRadius={90}
+                outerRadius={85}
                 paddingAngle={4}
                 dataKey="value"
-                label={({ name, percent }) => `${name} (${(percent * 100).toFixed(0)}%)`}
-                labelLine={false}
-                style={{ fontSize: "11px", fill: "var(--text-h)", fontWeight: 500 }}
+                label={({ percent }) => `${(percent * 100).toFixed(0)}%`}
+                labelLine={true}
+                style={{ fontSize: "11px", fill: "var(--text-h)", fontWeight: 600 }}
               >
                 {pieData.map((entry, index) => (
                   <Cell 

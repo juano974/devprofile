@@ -21,7 +21,7 @@ function Dashboard() {
   return (
     <div className="dashboard-wrapper">
       <div className="dashboard-header">
-        <h1>Dashboard Profesional</h1>
+        <h1>Panel de Métricas</h1>
         <p>
           ¡Hola, {userName}! Visualiza y analiza el balance de tu perfil profesional{userProfession} en tiempo real.
         </p>
@@ -32,7 +32,7 @@ function Dashboard() {
           <div className="empty-icon-pulse">
             <FiActivity />
           </div>
-          <h2>Tu Dashboard está esperando por ti</h2>
+          <h2>Tu panel de métricas está esperando por ti</h2>
           <p>
             Para poder generar las métricas de tu perfil profesional, primero debes agregar tus habilidades. 
             Regresa al Editor y agrega habilidades, proyectos o idiomas para verlos reflejados aquí.
