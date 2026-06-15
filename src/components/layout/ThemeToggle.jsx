@@ -1,7 +1,7 @@
 import useTheme from "../../hooks/useTheme"
 import { FiSun, FiMoon } from "react-icons/fi"
 
-function ThemeToggle() {
+function ThemeToggle() {  
   const { isDark, toggleTheme } = useTheme()
 
   return (
